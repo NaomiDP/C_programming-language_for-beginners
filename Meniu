@@ -1,0 +1,170 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <ctype.h>
+
+#define NMAX 50
+
+//citirea elementelor din vectorului => numarul de elemente
+int citire(int x[])
+{
+	int nr,i;
+	printf("Introduceti numarul de elemente: ");
+	scanf("%d", &nr);
+	for (i=0; i < nr; i++)
+		{
+		printf("Elementul %d = ",i);
+		scanf("%d", &x[i]);
+		}
+	return nr;
+}
+
+//afisarea elementelor vectorului
+void afisare(int nr, int x[])
+{
+	int i;
+	printf("\nElementele vectorului sunt: ");
+	for (i=0; i < nr; i++)
+		printf("%d ",x[i]);
+	getch();
+}
+//suma elementelor
+int suma(int x[], int nr)
+{
+    int s=0,i;
+    for(i=0;i<nr;i++)
+        s=s+x[i];
+    return s;
+
+}
+//media
+float media(int x[], int nr)
+{
+    int p=0,i;
+    float ma=0;
+    for(i=0;i<nr;i++)
+        {ma=ma+x[i]; p++;}
+    return ma/(float)p;
+
+}
+//cautare element in vector
+void element(int nr, int x[])
+{
+    int i,p=0,e;
+    printf("\nIntrodu un element: ");
+    scanf("%d", &e);
+    for(i=0;i<nr;i++)
+        if(x[i]==e) p++;
+    if(p==0)
+        printf("Numarul %d nu apare in vector", e);
+    else
+        printf("numarul %d apare de %d ori in vector",e,p);
+    getch();
+}
+//numarul de el pare
+void elpare_imp(int nr, int x[])
+{
+    int i,p=0,im=0;
+    for(i=0;i<nr;i++)
+    {
+        if(x[i]%2==0) p++;
+        else im++;
+    }
+    printf("Vectorul are %d elemente pare si %d elemente impare", p,im);
+    getch();
+}
+//nr el divizibile cu 3
+int div3(int nr, int x[])
+{
+    int i,d=0;
+    for(i=0;i<nr;i++)
+        if(x[i]%3==0) d++;
+    return d;
+}
+
+//informatii autor
+void info_autor()
+{
+    printf("Nume:NaomiDP");
+    getch();
+}
+
+// functia principala
+int main(void)
+{
+   int v[NMAX],n=-1,s;
+   float ma;
+   char opt;
+
+   do
+   {
+	system("cls");
+	printf("\nC.Citire");
+	printf("\nA.Afisare");
+	printf("\nS.Suma elementelor");
+	printf("\nM.Media elementelor");
+	printf("\nE.Cautare element in vector");
+	printf("\nP.Numar de elemente pare");
+	printf("\nN.Numar de elemente divizibile cu 3");
+	printf("\nI.Info autor");
+	printf("\nX.Exit");
+	printf("\n\nOptiunea dv:");
+	opt = toupper(getche());
+	printf("\n\n");
+	switch(opt)
+	{
+	   case 'C':
+	       n = citire(v);
+			  getch();
+			  break;
+
+	   case 'A':
+	       if(n==-1) printf("Nu s-a citit vectorul");
+	       else  afisare(n, v);
+			  getch();
+			  break;
+
+	   case 'S':
+	       if(n==-1) printf("Nu s-a citit vectorul");
+	       else {s=suma(v, n);
+              printf("Suma elementelor este: %d", s);}
+              getch();
+			  break;
+       case 'M':
+           if(n==-1) printf("Nu s-a citit vectorul");
+           else{ma=media(v, n);
+            printf("Media elementelor este: %.2f", ma);}
+           getch();
+           break;
+
+       case 'E':if(n==-1) printf("Nu s-a citit vectorul");
+           else element(n,v);
+           getch();
+           break;
+
+       case 'P':
+           if(n==-1) printf("Nu s-a citit vectorul");
+           else elpare_imp(n,v);
+           getch();
+           break;
+
+       case 'N':
+        if(n==-1) printf("Nu s-a citit vectorul");
+           else{n=div3(n,v);
+            printf("Nr el div cu 3 este: %d", n);
+            }
+           getch();
+           break;
+
+       case 'I': info_autor();
+           getch();
+           break;
+
+	   case 'X': exit(0);
+	   default:  printf("\nOptiune inexistenta");
+				getch();
+				break;
+	}
+   } while (1);
+   return 0;
+}
