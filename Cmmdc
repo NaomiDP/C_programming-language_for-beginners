@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define DIM_MAX 30
+
+int main()
+{
+    int v[DIM_MAX];
+    int n, ma=0, a, b, i;
+    printf("Dati n: ");
+    scanf("%d", &n);
+
+    for (i=0; i<n; i++)
+    {
+        printf("\nv[%d]= ",i);
+        scanf("%d", &v[i]);
+    }
+    printf("\n");
+
+    for (i=0;i<n-2;i++)
+    {
+        a=v[i];
+        b=v[i+1];
+
+        while (a!=b)
+        {
+            if (a>b)
+                a=a-b;
+            else
+                b=b-a;
+        }
+
+        if (ma<b)
+            ma=b;
+
+    }
+    printf("Cel mai mare divizor comun al elementelor din vector este %d \n", ma);
+    return 0;
+}
