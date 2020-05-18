@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define DIM_MAX 30
+int main()
+{
+    int v[DIM_MAX];
+    int n, i, p=0, a=0, aux;
+    printf("Introduceti un numar: ");
+    scanf("%d", &n);
+    aux=n;
+    while(aux!=0)
+        {
+            if(aux<0)
+                aux=aux*(-1);
+            v[p]=aux%10;
+            aux=aux/10;
+            p++;
+        }
+    for(i=0; i<p; i++)
+    {
+        a=a*10+v[i];
+    }
+    if(n<0)
+        n=n*(-1);
+    if (a==n)
+        printf("%d este palindrom", n);
+    else
+        printf("%d nu este palindrom", n);
+    return 0;
+}
