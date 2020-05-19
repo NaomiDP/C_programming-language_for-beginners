@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define DIM_MAX 104
+
+int main()
+{
+    int v[DIM_MAX], n, ma=-23000, i;
+    printf("Dati n: ");
+    scanf("%d", &n);
+
+    for (i=0; i<n; i++)
+    {
+        printf("\nv[%d]= ",i);
+        scanf("%d", &v[i]);
+    }
+    printf("\n");
+
+
+    for (i=0; i<n; i++)
+        if (ma<v[i] && v[i]<0)
+            ma=v[i];
+    printf("Maximul elementelor negative este %d", ma);
+
+    return 0;
+}
