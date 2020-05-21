@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_LIN 30
+#define MAX_COL 20
+
+int main()
+{
+// declarare matrice de reali de maxim 30 de elemente
+    float mat[MAX_LIN][MAX_COL];
+    int n,m,i,j,a;
+    printf("Dati linia care va fi taiata: ");
+    scanf("%d", &a);
+// citirea numarului de linii si de coloane
+    do
+    {
+        printf("\n\nDati numarul de linii: ");
+        scanf("%d", &n);
+    }
+    while(n<0 || n>MAX_LIN);
+    do
+    {
+        printf("Dati numarul de coloane: ");
+        scanf("%d", &m);
+    }
+    while(m<0 || m>MAX_COL);
+
+//citirea elementelor
+    printf("\nDati elementele matricei:\n");
+    for( i=1; i<=n; i++)
+        for( j=1; j<=m; j++)
+        {
+            printf("\nmat[%d][%d] = ", i, j);
+            scanf("%f", &mat[i][j]);
+        }
+
+// afisarea metricei
+    printf("\nMatricea este:\n");
+    for( i=1; i<=n; i++)
+    {
+        for( j=1; j<=m; j++)
+            printf("%7.1f", mat[i][j]);
+        printf("\n");
+    }
+    printf("\n\nMatricea dupa ce s-a  taiat linia data este:\n");
+    //taie o linie
+    if(a>n)
+       printf("Nu exista aceasta linie");
+    else if(a==n)
+    {
+        for( i=1; i<n; i++)
+        {
+            for( j=1; j<=m; j++)
+                printf("%7.1f", mat[i][j]);
+            printf("\n");
+        }
+    }
+    else
+    {
+        for(i=1; i<=n; i++)
+        {
+            for(j=1; j<=m; j++)
+            {
+                if(i==a)
+                    i++;
+                printf("%7.1f ", mat[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    getch();
+    return 0;
+}
