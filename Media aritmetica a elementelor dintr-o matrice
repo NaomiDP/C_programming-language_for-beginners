@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_LIN 30
+#define MAX_COL 20
+
+int main()
+{
+    float a[MAX_LIN][MAX_COL];
+    int n,m,i,j,nr=0;
+    float s;
+    // citirea numarului de linii si de coloane
+    do
+    {
+        printf("Dati numarul de linii: ");
+        scanf("%d", &n);
+    }while(n<0 || n>MAX_LIN);
+    do
+    {
+        printf("Dati numarul de coloane: ");
+        scanf("%d", &m);
+    }while(m<0 || m>MAX_COL);
+    //citirea elementelor
+    printf("\nDati elementele matricei:\n");
+    for( i=0; i<n; i++)
+        for( j=0; j<m; j++)
+        {
+           printf("\na[%d][%d] = ", i, j);
+           scanf("%f", &a[i][j]);
+        }
+    for( i=0; i<n; i++)
+    {
+        for( j=0; j<m; j++)
+          if(a[i][j]>0)
+          {
+              s=s+a[i][j];
+              nr++;
+          }
+    }
+    if(nr!=0)
+        printf("Ma = %f ", s/nr);
+    else
+        printf("Nu sunt valori pozitive in matrice");
+    return 0;
+}
