@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_LIN 30
+#define MAX_COL 20
+#define DIM_MAX 104
+
+
+int main()
+{
+    int a[MAX_LIN][MAX_COL];
+    int v[DIM_MAX];
+    int n,m,i,j,k,p=0,cop;
+
+    do
+    {
+        printf("Dati numarul de linii: ");
+        scanf("%d", &n);
+    }while(n<0 || n>MAX_LIN);
+    do
+    {
+        printf("Dati numarul de coloane: ");
+        scanf("%d", &m);
+    }while(m<0 || m>MAX_COL);
+
+    printf("\nDati elementele matricei:\n");
+    for( i=0; i<n; i++)
+        for( j=0; j<m; j++)
+        {
+           printf("\na[%d][%d] = ", i, j);
+           scanf("%d", &a[i][j]);
+        }
+
+    printf("\nNumerele perfecte sunt:\n");
+    for(i=0; i<n; i++)
+    {
+        for(j=0; j<m; j++)
+        { int s=0;
+            cop=a[i][j];
+            for(k=1;k<=cop/2;k++)
+            {
+                if(cop%k==0)
+                    s=s+k;
+            }
+            if(s==cop)
+            {
+                v[p]=cop;
+                p++;
+            }
+        }
+
+    }
+
+    if(p==0)
+        printf("Nu sunt nr perfecte ");
+    else
+        for(i=0;i<p;i++) {printf("%d ", v[i]);}
+
+    return 0;
+}
